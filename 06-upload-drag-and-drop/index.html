@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" ng-app="fileUpload">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload File</title>
+  <LINK REL=StyleSheet HREF="style.css" TYPE="text/css">
+</head>
+<body ng-app="fileUpload" ng-controller="MyCtrl">
+
+<div>
+  Username
+  <input type="text" ng-model="username"><br/><br/>
+  watching model:
+  <div class="button" ngf-select ng-model="file" ngf-multiple="false">Select
+    File
+  </div>
+  on file change multiple:
+  <div class="button" ngf-select="upload($files)" ngf-multiple="true">Select
+    File
+  </div>
+  Drop File:
+  <div ngf-drop ngf-select ng-model="files" class="drop-box"
+       ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+       accept="image/*,application/pdf"
+       ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload
+  </div>
+  <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+  Files:
+  <ul>
+    <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}}
+      {{f.$errorParam}}
+    </li>
+  </ul>
+  Upload Log:
+  <pre>{{log}}</pre>
+</div>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="app.js"></script>
+<script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.js"></script>
+<!-- for no html5 browsers support -->
+<script src="node_modules/ng-file-upload/dist/ng-file-upload.js"></script>
+
+</body>
+</html>

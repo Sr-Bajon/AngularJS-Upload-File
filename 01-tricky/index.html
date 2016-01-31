@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" ng-app="uploadFileApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload File</title>
+</head>
+<body ng-controller="uploadFileController as ufCtrl">
+
+<form name="myForm" ng-submit="ufCtrl.submit()" novalidate>
+  <input type="file"
+         name="myInputFile"
+         ng-model="files"
+         onchange="angular.element(this).scope().filesChanged(this)"
+         multiple>
+  <input type="submit" value="submit">
+</form>
+<ul>
+  <li ng-repeat="file in ufCtrl.files">{{file.name}}</li>
+</ul>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
